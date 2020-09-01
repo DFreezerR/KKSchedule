@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
 using Permission = Plugin.Permissions.Abstractions.Permission;
 
 namespace ScheduleKK.Droid
@@ -26,7 +27,8 @@ namespace ScheduleKK.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            AppCenter.Start("a094357a-a18c-417d-9eaf-59fe66a81b46", typeof(Analytics), typeof(Crashes));
+            Distribute.SetEnabledForDebuggableBuild(true);
+            AppCenter.Start("a094357a-a18c-417d-9eaf-59fe66a81b46", typeof(Analytics), typeof(Crashes), typeof(Distribute));
             base.OnCreate(savedInstanceState);
 
             this.Window.AddFlags(WindowManagerFlags.Fullscreen);
