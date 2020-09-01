@@ -25,7 +25,7 @@ namespace ScheduleKK
 
         public static async Task GetSchedule()
         {
-            folder = await FileSystem.Current.LocalStorage.CreateFolderAsync("Schedule", CreationCollisionOption.ReplaceExisting);
+            folder = await FileSystem.Current.LocalStorage.CreateFolderAsync("Schedule", CreationCollisionOption.OpenIfExists);
             path = folder.Path;
             try
             {
@@ -33,7 +33,6 @@ namespace ScheduleKK
                 {
                     var webClient = new WebClient();
                     webClient.DownloadFile(new Uri(url), PortablePath.Combine(path, file));
-                    ReadFile();
                 }
                 else
                 {
@@ -43,6 +42,14 @@ namespace ScheduleKK
             catch (IOException ex)
             {
                 Debug.WriteLine("ERROR:" + ex.Message);
+            }
+            finally
+            {
+                var check = await folder.CheckExistsAsync(file);
+                if (check == ExistenceCheckResult.FileExists)
+                {
+                    ReadFile();
+                }
             }
         }
         public static void ReadFile()

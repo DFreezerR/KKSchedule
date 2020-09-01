@@ -1,17 +1,12 @@
 ﻿
 using System.Collections.Generic;
-using System.Linq;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Picker = Xamarin.Forms.Picker;
 using PCLStorage;
 using System.IO;
-using ExcelDataReader;
-using System.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Entry = Xamarin.Forms.Entry;
 using System;
