@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ScheduleKK.SettingsPage"
+             Title="Настройки">
+  <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label x:Name="title" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="Настройки" FontSize="20" TextColor="White"/>
+            <Image x:Name="accept" WidthRequest="25" Aspect="AspectFit" Source="check.png" HorizontalOptions ="EndAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+  </NavigationPage.TitleView>
+  <ContentPage.Content>
+
+        <RefreshView x:Name="refreshSettings">
+            <ScrollView>
+                <StackLayout x:Name="stackSettings" Padding="15">
+
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>
