@@ -8,10 +8,20 @@
                   x:Name="master">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="List Menu">
+        <ContentPage Title="List Menu" x:Name="contentPage">
             <ContentPage.Content>
                 <ListView x:Name="menuList">
-                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                
+                                <ViewCell.View>
+                                    <Label Text="{Binding .}" FontSize="20" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center" TextColor="Black"/>
+                                </ViewCell.View>
+                                
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </ContentPage.Content>
         </ContentPage>

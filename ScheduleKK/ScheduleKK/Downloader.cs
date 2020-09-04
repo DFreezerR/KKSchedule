@@ -39,7 +39,7 @@ namespace ScheduleKK
                     DependencyService.Get<IMessage>().ShortAlert("Нет URL");
                 }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine("ERROR:" + ex.Message);
             }

@@ -46,7 +46,7 @@ namespace ScheduleKK
                 Detail = new NavigationPage(pages[e.ItemIndex].page) { BarTextColor = Color.White, BarBackgroundColor = Color.DarkKhaki };
             };
             menuList.BackgroundColor = Color.Khaki;
-            menuList.Header = new Label() { Text = "Меню", FontSize = 35, HorizontalTextAlignment = TextAlignment.Center, BackgroundColor = Color.DarkKhaki, TextColor = Color.White };
+            menuList.Header = new Label() { Text = "Меню", FontSize = 30, HorizontalTextAlignment = TextAlignment.Center, BackgroundColor = Color.DarkKhaki, TextColor = Color.White, Padding = new Thickness(5) };
             Detail = new NavigationPage(pages[0].page) { BarTextColor = Color.White, BarBackgroundColor = Color.DarkKhaki };
 
         }

@@ -42,9 +42,6 @@ namespace ScheduleKK
         }
         public static async Task SettingsInit()
         {
-            //picker.SelectedIndexChanged -= TapGestureRecognizer_Tapped;
-            //picker.ItemsSource = groupL;
-            //picker.SelectedIndex = 0;
             var fileCheck = await FileSystem.Current.LocalStorage.CheckExistsAsync("Settings");
             if (fileCheck == ExistenceCheckResult.FolderExists)
             {
@@ -74,7 +71,6 @@ namespace ScheduleKK
                 Downloader.url = "";
                 picker.SelectedIndex = -1;
             }
-            //picker.SelectedIndexChanged += TapGestureRecognizer_Tapped;
         }
         private static async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
