@@ -301,5 +301,10 @@ namespace ScheduleKK
             });
             Task.Run(()=>GetPermissions());
         }
+
+        private void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
+        {
+
+        }
     }
 }
