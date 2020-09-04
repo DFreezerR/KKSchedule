@@ -99,7 +99,7 @@ namespace ScheduleKK
                         SettingsPage.picker.SelectedItem = groupList[0];
                     }
                     
-                    title.FontSize = 17;
+                    title.FontSize = 20;
                     title.TextColor = Color.White;
 
                     List<Day> days = new List<Day>();
