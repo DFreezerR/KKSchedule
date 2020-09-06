@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ScheduleKK.SettingsPage"
-             Title="Настройки">
+             Title="{Binding Text, Source={x:Reference title}}">
   <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
             <Label x:Name="title" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="Настройки" FontSize="20" TextColor="White"/>

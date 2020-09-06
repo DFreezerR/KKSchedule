@@ -77,6 +77,8 @@ namespace ScheduleKK
         }
         private static async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
+            await ((Image)sender).FadeTo(0.3, 100);
+            await ((Image)sender).FadeTo(1, 100);
             if (picker.SelectedIndex == -1 && (urlEntry.Text == "" || urlEntry.Text == null))
             {
                 DependencyService.Get<IMessage>().ShortAlert("Нечего сохранять");

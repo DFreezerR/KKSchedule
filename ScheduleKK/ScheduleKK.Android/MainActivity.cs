@@ -28,6 +28,7 @@ namespace ScheduleKK.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             Distribute.SetEnabledForDebuggableBuild(true);
+            Distribute.DisableAutomaticCheckForUpdate();
             AppCenter.Start("a094357a-a18c-417d-9eaf-59fe66a81b46", typeof(Analytics), typeof(Crashes), typeof(Distribute));
             base.OnCreate(savedInstanceState);
 

@@ -16,7 +16,7 @@
                             <ViewCell>
                                 
                                 <ViewCell.View>
-                                    <Label Text="{Binding .}" FontSize="20" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center" TextColor="Black"/>
+                                    <Label Text="{Binding Title}" FontSize="20" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center" TextColor="Black"/>
                                 </ViewCell.View>
                                 
                             </ViewCell>

@@ -5,9 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ScheduleKK.SchedulePage"
-             Title="Расписание">
+             Title="{Binding Text, Source={x:Reference title}}">
     <NavigationPage.TitleView>
-        <Label x:Name="title"/>
+        <Label x:Name="title" Text="Расписание" FontSize="20" TextColor="White" VerticalOptions="Center"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <RefreshView x:Name="refreshView">
