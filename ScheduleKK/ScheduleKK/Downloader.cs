@@ -22,6 +22,7 @@ namespace ScheduleKK
         static string path;
         static string file = "schedule.xls";
         public static string url;
+        public static string host = "www.krstc.ru";
 
         public static async Task GetSchedule()
         {
@@ -36,12 +37,12 @@ namespace ScheduleKK
                 }
                 else
                 {
-                    DependencyService.Get<IMessage>().ShortAlert("Нет URL");
+                    DependencyService.Get<IMessage>().ShortAlert("Нет URL.");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Debug.WriteLine("ERROR:" + ex.Message);
+                DependencyService.Get<IMessage>().ShortAlert("Нет интернета.");
             }
             finally
             {

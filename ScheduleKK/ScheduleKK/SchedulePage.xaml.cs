@@ -231,47 +231,51 @@ namespace ScheduleKK
                         {
                             RowDefinitions =
                         {
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)},
-                            new RowDefinition(){ Height = new GridLength(.5, GridUnitType.Star)}
+                            new RowDefinition(){ Height = new GridLength(.55, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.55, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.55, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)},
+                            new RowDefinition(){ Height = new GridLength(.7, GridUnitType.Star)}
                         },
                             ColumnDefinitions =
                         {
                             new ColumnDefinition(){ Width = new GridLength(.5, GridUnitType.Star)},
-                            new ColumnDefinition(){ Width = new GridLength(1, GridUnitType.Star)},
+                            new ColumnDefinition(){ Width = new GridLength(1.2, GridUnitType.Star)},
                             new ColumnDefinition(){ Width = new GridLength(.5, GridUnitType.Star)}
                         }
                         });
-                        Label header = new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = days[i].date + "\n" + days[i].building, HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black };
-                        grids[i].Children.Add(header, 0, 0);
-                        grids[i].Children.Add(new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = "Время", HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, 0, 1);
-                        grids[i].Children.Add(new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = "Пара", HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, 1, 1);
-                        grids[i].Children.Add(new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = "Кабинет", HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, 2, 1);
-                        Grid.SetColumnSpan(header, 3);
+                        Label headerDate = new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = days[i].date, HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black };
+                        Label headerPlace = new Label() { BackgroundColor = Color.Khaki, FontAttributes = FontAttributes.Bold, FontSize = 20, Padding = new Thickness(5), Text = days[i].building, HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black };
+                        grids[i].Children.Add(headerDate, 0, 0);
+                        grids[i].Children.Add(headerPlace, 0, 1);
+                        grids[i].Children.Add(new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = "Время", HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, 0, 2);
+                        grids[i].Children.Add(new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = "Пара", HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, 1, 2);
+                        grids[i].Children.Add(new Label() { BackgroundColor = Color.Khaki, FontSize = 20, Padding = new Thickness(5), Text = "Каб.", HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, 2, 2);
+                        Grid.SetColumnSpan(headerDate, 3);
+                        Grid.SetColumnSpan(headerPlace, 3);
                         grids[i].ColumnSpacing = 3;
                         grids[i].Margin = new Thickness(10);
-                        for (int t = 2; t < grids[i].RowDefinitions.Count; t++)
+                        for (int t = 3; t < grids[i].RowDefinitions.Count; t++)
                         {
                             for (int j = 0; j < grids[i].ColumnDefinitions.Count; j++)
                             {
                                 if (j == 0)
                                 {
-                                    grids[i].Children.Add(new Label() { BackgroundColor = Color.FromRgba(0, 0, 0, .05), Padding = new Thickness(5), Text = days[i].paras[t - 2].time, HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, j, t);
+                                    grids[i].Children.Add(new Label() { BackgroundColor = Color.FromRgba(0, 0, 0, .05), Padding = new Thickness(5), Text = days[i].paras[t - 3].time, HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black }, j, t);
                                 }
                                 if (j == 1)
                                 {
-                                    grids[i].Children.Add(new Label() { BackgroundColor = Color.FromRgba(0, 0, 0, .05), Padding = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, Text = days[i].paras[t - 2].name, TextColor = Color.Black }, j, t);
+                                    grids[i].Children.Add(new Label() { BackgroundColor = Color.FromRgba(0, 0, 0, .05), Padding = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, Text = days[i].paras[t - 3].name, TextColor = Color.Black }, j, t);
                                 }
                                 if (j == 2)
                                 {
-                                    grids[i].Children.Add(new Label() { BackgroundColor = Color.FromRgba(0, 0, 0, .05), Padding = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, Text = days[i].paras[t - 2].cabinet, TextColor = Color.Black }, j, t);
+                                    grids[i].Children.Add(new Label() { BackgroundColor = Color.FromRgba(0, 0, 0, .05), Padding = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center, Text = days[i].paras[t - 3].cabinet, TextColor = Color.Black }, j, t);
                                 }
                             }
                         }

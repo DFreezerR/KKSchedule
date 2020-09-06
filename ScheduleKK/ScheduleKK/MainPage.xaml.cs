@@ -27,17 +27,6 @@ namespace ScheduleKK
 
             List<TitledPage> pages = new List<TitledPage>() { new TitledPage(new SchedulePage()), new TitledPage(new SettingsPage()) };
             
-            var template = new DataTemplate(() =>
-            {
-                var grid = new Grid();
-                var optionLabel = new Label { FontAttributes = FontAttributes.Bold, FontSize = 20, TextColor = Color.Black };
-
-                optionLabel.SetBinding(Label.TextProperty, "Title");
-                grid.Children.Add(optionLabel);
-
-                return new ViewCell { View = grid };
-
-            });
             var titles = new List<string>() { "Расписание", "Настройки" };
             menuList.ItemsSource = titles;
             menuList.ItemTapped += (s, e) =>

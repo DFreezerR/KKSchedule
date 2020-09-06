@@ -27,11 +27,13 @@ namespace ScheduleKK
             Label urlLabel = new Label() { Text = "Ссылка:", FontSize = 20, HorizontalTextAlignment = TextAlignment.Start, FontAttributes = FontAttributes.Bold, Margin = new Thickness(0, 0, 0, 5.0) };
             urlEntry = new Entry();
             picker = new Picker();
-            /*refreshSettings.Command = new Command(() =>
+            refreshSettings.Command = new Command(async () =>
             {
-                picker.ItemsSource = groupL;
+                /*await Downloader.GetSchedule();
+                groupL = Downloader.GetGroups(Downloader.dataSet.Tables["Речная"]);
+                picker.ItemsSource = groupL;*/
                 refreshSettings.IsRefreshing = false;
-            });*/
+            });
             picker.Title = "Выберите группу";
             urlEntry.Placeholder = "Введите ссылку на расписание";
             accept.Margin = new Thickness(0, 0, 10, 0);
@@ -70,38 +72,45 @@ namespace ScheduleKK
                 lastGroup = "";
                 Downloader.url = "";
                 picker.SelectedIndex = -1;
+                DependencyService.Get<IMessage>().ShortAlert("Настройте программу.");
             }
         }
         private static async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
+            if (picker.SelectedIndex == -1 && (urlEntry.Text == "" || urlEntry.Text == null))
+            {
+                DependencyService.Get<IMessage>().ShortAlert("Нечего сохранять");
+                return;
+            }
             string url = "";
+            string notify = "";
             bool result = false;
             Uri uriResult;
             var folder = await FileSystem.Current.LocalStorage.CreateFolderAsync("Settings", CreationCollisionOption.OpenIfExists);
             var file = await folder.CreateFileAsync("config.json", CreationCollisionOption.OpenIfExists);
-            JObject obj = new JObject();
-            if (urlEntry.Text != "" && urlEntry.Text != null)
-            {
-                url = urlEntry.Text.Trim();
-                result = Uri.TryCreate(url, UriKind.Absolute, out uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-                if (result && uriResult.Host == "www.krstc.ru")
-                {
-                    obj["url"] = url;
-                }
-                else
-                {
-                    DependencyService.Get<IMessage>().ShortAlert("Проверьте URL");
-                }
-            }
+            var obj = new JObject();
             if (picker.SelectedIndex != null && picker.SelectedIndex > -1)
             {
                 lastGroup = picker.SelectedItem.ToString();
                 obj["lastGroup"] = lastGroup;
             }
-
+            if (urlEntry.Text != "" && urlEntry.Text != null)
+            {
+                url = urlEntry.Text.Trim();
+                result = Uri.TryCreate(url, UriKind.Absolute, out uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+                if (result && uriResult.Host == Downloader.host)
+                {
+                    obj["url"] = url;
+                }
+                else
+                {
+                    notify = "Проверьте URL.";
+                }
+            }
             string json = JsonConvert.SerializeObject(obj);
             await file.WriteAllTextAsync(json);
-            DependencyService.Get<IMessage>().ShortAlert("Настройки сохранены");
+            notify = notify == "" ? "Настройки сохранены." : notify;
+            DependencyService.Get<IMessage>().ShortAlert(notify);
         }
     }
     public interface IMessage
