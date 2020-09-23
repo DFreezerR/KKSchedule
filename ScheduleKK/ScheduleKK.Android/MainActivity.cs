@@ -31,7 +31,8 @@ namespace ScheduleKK.Droid
             //Distribute.DisableAutomaticCheckForUpdate();
             AppCenter.Start("a094357a-a18c-417d-9eaf-59fe66a81b46", typeof(Analytics), typeof(Crashes), typeof(Distribute));
             base.OnCreate(savedInstanceState);
-
+            this.Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
+            this.Window.Attributes.LayoutInDisplayCutoutMode = LayoutInDisplayCutoutMode.ShortEdges;
             this.Window.AddFlags(WindowManagerFlags.Fullscreen);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
